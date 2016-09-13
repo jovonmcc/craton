@@ -12,6 +12,6 @@ Craton API
 
 .. rest_expand_all::
 
-.. include:: cells.inc
-.. include:: hosts.inc
-.. include:: regions.inc
+.. include:: cells.rst
+.. include:: hosts.rst
+.. include:: regions.rst
