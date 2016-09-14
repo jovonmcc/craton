@@ -8,8 +8,7 @@ Definition of cell
 
 Create Cell
 ============
-
-.. rest_method:: POST /v1/cells
+POST /v1/cells
 
 Create a new Cell
 
@@ -20,11 +19,15 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - name : cell_name
-    - region_id: region_id_body
-    - project_id: project_id
++-----------+------+---------+-------------------------+
+| Name      | In   | Type    | Description             |
++===========+======+=========+=========================+
+| name      | boody| string  | Unique name of the cell |
++-----------+------+---------+-------------------------+
+| region_id | body | integer | Unique ID of the reigion|
++-----------+------+---------+-------------------------+
+| project_id| body | integer | ID of the project       |
++-----------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
