@@ -51,11 +51,11 @@ Response
 | Name      | In   | Type    | Description             |
 +===========+======+=========+=========================+
 | cell      | body | object  | - cell_id               |
-+-----------+------+---------| - cell_name             |
-+-----------+------+---------| - region_id             |
-+-----------+------+---------| - project_id            |
-+-----------+------+---------| - note                  |
-+-----------+------+---------| - data                  |
+|           |      |         | - cell_name             |
+|           |      |         | - region_id             |
+|           |      |         | - project_id            |
+|           |      |         | - note                  |
+|           |      |         | - data                  |
 +-----------+------+---------+-------------------------+
 | cell_id   | body | object  | Unique ID of the cell   |
 +-----------+------+---------+-------------------------+
@@ -72,7 +72,9 @@ Response
 List Cells
 ==========
 
-.. rest_method::  GET /v1/cells
+.. glossary::  
+    GET 
+        /v1/cells
 
 Gets all Cells
 
@@ -85,38 +87,49 @@ Default response: unexpected error
 Request
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - cell: cell_name_query
-    - region: region_name_query
++-----------+-------+---------+--------------------------+
+| Name      | In    | Type    | Description              |
++===========+=======+=========+==========================+
+| cell      | query | string  | Name of the cell to get  |
++-----------+-------+---------+--------------------------+
+| region    | query | string  | Name of the region to get|
++-----------+-------+---------+--------------------------+ 
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - cells: cells
-    - id: cell_id_body
-    - name: cell_name
-    - region_id: region_id_body
-    - project_id: project_id
-    - note: note
-    - data: data
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| cells      | body | array   | array cell objects      |
++------------+------+---------+-------------------------+
+| cell__id   | body | integer | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| cell_name  | body | string  | Unique name of the cell |
++------------+------+---------+-------------------------+
+| region_id  | body | integer | Unique ID of the region |
++------------+------+---------+-------------------------+
+| project_id | body | ineger  | ID of the project       |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
 
 **Example List Cells** (TO-DO)
 
 ..literalinclude:: ../../doc/api_samples/cells/cells-list-resp.json
-   :language: javascript
+   :language: javascript 
 
-**Example Unexpected Error **
+**Example Unexpected Error** (TO-DO)
 
 ..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
    :language: javascript
@@ -124,7 +137,9 @@ Response
 Update Cells
 ============
 
-.. rest_method:: PUT /v1/cells/{cell_id}
+.. glossary:: 
+    PUT 
+        /v1/cells/{cell_id}
 
 Update an existing cell
 
@@ -135,23 +150,31 @@ Error response codes: invalid request(400), cell not found(404), validation exce
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - id: cell_id_body
-    - name: cell_name
-    - region_id: region_id_body
-    - project_id: project_id
-    - note: note
-    - data: data
-    - cell_id: cell_id
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| cell__id   | body | integer | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| cell_name  | body | string  | Unique name of the cell |
++------------+------+---------+-------------------------+
+| region_id  | body | integer | Unique ID of the region |
++------------+------+---------+-------------------------+
+| project_id | body | ineger  | ID of the project       |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
+| cell_id    | path | integer | Unique ID of the cell   |
++------------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Cell** (TO-DO)
 
@@ -161,15 +184,28 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - cell: cell
-    - id: cell_id_body
-    - name: cell_name
-    - region_id: region_id_body
-    - project_id: project_id
-    - note: note
-    - data: data
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| cell      | body | object  | - cell_id                |
+|           |      |         | - cell_name              |
+|           |      |         | - region_id              |
+|           |      |         | - project_id             |
+|           |      |         | - note                   |
+|           |      |         | - data                   |
++-----------+------+---------+--------------------------+
+| cell_id   | body | object  | Unique ID of the cell    |
++-----------+------+---------+--------------------------+
+| cell_name | body | object  | Unique name of the cell  |
++-----------+------+---------+--------------------------+
+| region_id | body | object  | Unique ID of the region  |
++-----------+------+---------+--------------------------+
+| project_id| body | ineger  | ID of the project        |
++-----------+------+---------+--------------------------+
+| note      | body | string  | Note used for governance |
++-----------+------+---------+--------------------------+
+| data      | body | object  | User defined data        |
++-----------+------+---------+--------------------------+
 
 **Example Update Cell**  (TO-DO)
 
@@ -179,7 +215,9 @@ Response
 Update Cell Data
 ==================
 
-.. rest_method:: PUT /v1/cells/{cell_id}/data
+.. glossary::
+    PUT 
+        /v1/cells/{cell_id}/data
 
 Update user defined data for the cell
 
@@ -190,11 +228,15 @@ Error response codes: invalid request(400), cell not found(404), validation exce
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - key: key
-    - value: value
-    - cell_id: cell_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| key    | body | string  | Identifier              |
++--------+------+---------+-------------------------+
+| value  | body | object  | Data                    |
++--------+------+---------+-------------------------+
+| cell_id| path | integer | Unique ID of the project|
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
