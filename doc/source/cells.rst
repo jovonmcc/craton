@@ -1,4 +1,4 @@
-.. -*- rst -*-
+.. _cells:
 
 ======
 Cells
@@ -21,15 +21,15 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-+-----------+------+---------+-------------------------+
-| Name      | In   | Type    | Description             |
-+===========+======+=========+=========================+
-| name      | boody| string  | Unique name of the cell |
-+-----------+------+---------+-------------------------+
-| region_id | body | integer | Unique ID of the reigion|
-+-----------+------+---------+-------------------------+
-| project_id| body | integer | ID of the project       |
-+-----------+------+---------+-------------------------+
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| region_name| boody| string  | Unique name of the cell |
++------------+------+---------+-------------------------+
+| region_id  | body | integer | Unique ID of the reigion|
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -47,15 +47,22 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - cell: cell
-    - id: cell_id_body
-    - name: cell_name
-    - region_id: region_id_body
-    - project_id: project_id
-    - note: note
-    - data: data
++-----------+------+---------+-------------------------+
+| Name      | In   | Type    | Description             |
++===========+======+=========+=========================+
+| cell      | body | object  | - cell_id               |
++-----------+------+---------| - cell_name             |
++-----------+------+---------| - region_id             |
++-----------+------+---------| - project_id            |
++-----------+------+---------| - note                  |
++-----------+------+---------| - data                  |
++-----------+------+---------+-------------------------+
+| cell_id   | body | object  | Unique ID of the cell   |
++-----------+------+---------+-------------------------+
+| cell_name | body | object  | Unique name of the cell |
++-----------+------+---------+-------------------------+
+| region_id | body | object  | Unique ID of the region |
++-----------+------+---------+-------------------------+
 
 **Example Create Cell** (TO-DO)
 
