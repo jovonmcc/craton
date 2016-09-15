@@ -8,7 +8,7 @@ Definition of cell
 
 Create Cell
 ============
-..glossary::
+.. glossary::
     POST 
         /v1/cells
 
