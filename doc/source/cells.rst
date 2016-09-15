@@ -241,10 +241,10 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Cell Data** (TO-DO)
 
@@ -254,10 +254,13 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - key: key
-    - value: value
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| key    | body | string  | Identifier              |
++--------+------+---------+-------------------------+
+| value  | body | object  | Data                    |
++--------+------+---------+-------------------------+
 
 **Example Update Cell Data** (TO-DO)
 
@@ -267,7 +270,9 @@ Response
 Delete Cell
 ===========
 
-.. rest_method:: DELETE /v1/cells/{cell_id}
+.. glossary:: 
+    DELETE 
+        /v1/cells/{cell_id}
 
 Deletes an existing record of a Cell
 
@@ -278,17 +283,19 @@ Error response codes: invalid request(400), cell not found(404)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - cell_id: cell_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| cell_id| path | integer | Unique ID of the project|
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
@@ -298,7 +305,9 @@ No body content is returned on a successful DELETE
 Delete Cell Data
 ================
 
-.. rest_method:: DELETE /v1/cells/{cell_id}/data
+.. glossary:: 
+    DELETE 
+        /v1/cells/{cell_id}/data
 
 Delete existing key/value data for the cell
 
@@ -309,17 +318,19 @@ Error response codes: invalid request(400), cell not found(404) validation excep
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - cell_id: cell_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| cell_id| path | integer | Unique ID of the project|
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
