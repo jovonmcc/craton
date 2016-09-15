@@ -8,7 +8,9 @@ Definition of cell
 
 Create Cell
 ============
-POST /v1/cells
+..glossary::
+    POST 
+        /v1/cells
 
 Create a new Cell
 
@@ -32,10 +34,10 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Create Cell** (TO-DO)
 
