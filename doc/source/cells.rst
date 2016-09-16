@@ -24,7 +24,7 @@ Request
 +------------+------+---------+-------------------------+
 | Name       | In   | Type    | Description             |
 +============+======+=========+=========================+
-| region_name| boody| string  | Unique name of the cell |
+| name       | boody| string  | Unique name of the cell |
 +------------+------+---------+-------------------------+
 | region_id  | body | integer | Unique ID of the reigion|
 +------------+------+---------+-------------------------+
@@ -51,7 +51,7 @@ Response
 | Name      | In   | Type    | Description             |
 +===========+======+=========+=========================+
 | cell      | body | object  | - cell_id               |
-|           |      |         | - cell_name             |
+|           |      |         | - name                  |
 |           |      |         | - region_id             |
 |           |      |         | - project_id            |
 |           |      |         | - note                  |
@@ -59,9 +59,15 @@ Response
 +-----------+------+---------+-------------------------+
 | cell_id   | body | object  | Unique ID of the cell   |
 +-----------+------+---------+-------------------------+
-| cell_name | body | object  | Unique name of the cell |
+| name      | body | object  | Unique name of the cell |
 +-----------+------+---------+-------------------------+
 | region_id | body | object  | Unique ID of the region |
++-----------+------+---------+-------------------------+
+| project_id| body | object  | ID of the project       |
++-----------+------+---------+-------------------------+
+| note      | body | object  | Note used for governance|
++-----------+------+---------+-------------------------+
+| data      | body | object  | User defined data       |
 +-----------+------+---------+-------------------------+
 
 **Example Create Cell** (TO-DO)
@@ -111,9 +117,9 @@ Response
 +============+======+=========+=========================+
 | cells      | body | array   | array cell objects      |
 +------------+------+---------+-------------------------+
-| cell__id   | body | integer | Unique ID of the cell   |
+| cell_id    | body | integer | Unique ID of the cell   |
 +------------+------+---------+-------------------------+
-| cell_name  | body | string  | Unique name of the cell |
+| name       | body | string  | Unique name of the cell |
 +------------+------+---------+-------------------------+
 | region_id  | body | integer | Unique ID of the region |
 +------------+------+---------+-------------------------+
@@ -153,9 +159,9 @@ Request
 +------------+------+---------+-------------------------+
 | Name       | In   | Type    | Description             |
 +============+======+=========+=========================+
-| cell__id   | body | integer | Unique ID of the cell   |
+| cell_id    | body | integer | Unique ID of the cell   |
 +------------+------+---------+-------------------------+
-| cell_name  | body | string  | Unique name of the cell |
+| name       | body | string  | Unique name of the cell |
 +------------+------+---------+-------------------------+
 | region_id  | body | integer | Unique ID of the region |
 +------------+------+---------+-------------------------+
@@ -188,7 +194,7 @@ Response
 | Name      | In   | Type    | Description              |
 +===========+======+=========+==========================+
 | cell      | body | object  | - cell_id                |
-|           |      |         | - cell_name              |
+|           |      |         | - name                   |
 |           |      |         | - region_id              |
 |           |      |         | - project_id             |
 |           |      |         | - note                   |
@@ -196,7 +202,7 @@ Response
 +-----------+------+---------+--------------------------+
 | cell_id   | body | object  | Unique ID of the cell    |
 +-----------+------+---------+--------------------------+
-| cell_name | body | object  | Unique name of the cell  |
+| name      | body | object  | Unique name of the cell  |
 +-----------+------+---------+--------------------------+
 | region_id | body | object  | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
@@ -235,7 +241,7 @@ Request
 +--------+------+---------+-------------------------+
 | value  | body | object  | Data                    |
 +--------+------+---------+-------------------------+
-| cell_id| path | integer | Unique ID of the project|
+| cell_id| path | integer | Unique ID of the cell   |
 +--------+------+---------+-------------------------+
 
 Required Header

@@ -1,4 +1,4 @@
-.. -*- rst -*-
+.. _hosts:
 
 =====
 Hosts
@@ -9,7 +9,9 @@ Definition of host
 Create Host
 ============
 
-.. rest_method:: POST /v1/hosts
+.. glossary:: 
+    POST 
+        /v1/hosts
 
 Create a new host
 
@@ -20,21 +22,27 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - name: host_name
-    - region_id: region_id_body
-    - project_id: project_id
-    - ip_address: ip_address
-    - device_type: device_type
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| name       | body | string  | Unique name of the host |
++------------+------+---------+-------------------------+
+| region_id  | body | integer | Unique ID of the region |
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
+| ip_address | body | string  | IP address of host      |
++------------+------+---------+-------------------------+
+| device_type| body | string  | Type of host            |
++------------+------+---------+-------------------------+  
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Create Host** (TO-DO)
 
@@ -44,20 +52,43 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - host: host
-    - id: host_id_body
-    - name: host_name
-    - cell_id: cell_id_body
-    - parent_id: parent_id
-    - project_id: project_id
-    - region_id: region_id_body
-    - ip_address: ip_address
-    - device_type: device_type
-    - labels: labels
-    - note: note
-    - data: data
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| host       | body | object  | - host_id               |
+|            |      |         | - name                  |
+|            |      |         | - cell_id               |
+|            |      |         | - region_id             |
+|            |      |         | - parent_id             |
+|            |      |         | - project_id            |
+|            |      |         | - ip_address            |
+|            |      |         | - device_type           |
+|            |      |         | - labels                |
+|            |      |         | - note                  |
+|            |      |         | - data                  |
++------------+------+---------+-------------------------+
+| host_id    | body | object  | Unique ID of the host   |
++------------+------+---------+-------------------------+
+| name       | body | object  | Unique name of the host |
++------------+------+---------+-------------------------+
+| cell_id    | body | object  | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| region_id  | body | object  | Unique ID of the region |
++------------+------+---------+-------------------------+
+| parent_id  | body | object  | Parent ID of this host  |
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
+| ip_address | body | string  | IP address of host      |
++------------+------+---------+-------------------------+
+| device_type| body | string  | Type of host            |
++------------+------+---------+-------------------------+
+| labels     | body | string  | User defined labels     |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
 
 **Example Create Host** (TO-DO)
 
@@ -67,7 +98,9 @@ Response
 List Hosts
 ==========
 
-.. rest_method::  GET /v1/hosts
+.. glossary::  
+    GET 
+        /v1/hosts
 
 Gets all Host
 
@@ -80,48 +113,70 @@ Default response: unexpected error
 Request
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - limit: limit
-    - name: host_name_query
-    - id: host_id_query
-    - region: region_name_query
-    - cell: cell_name_query
-    - ip_address: ip_address_query
-    - service: service
++------------+------+---------+-----------------------------------+
+| Name       | In   | Type    | Description                       |
++============+======+=========+===================================+
+| limit      | query| string  | Number of host to return          |
+|            |      |         | Ranging from 1 - 10000            |
++------------+------+---------+-----------------------------------+
+| name       | query| string  | Name of host to get               |
++------------+------+---------+-----------------------------------+
+| host_id    | query| integer | ID of the host to get             |
++------------+------+---------+-----------------------------------+
+| region     | query| string  | Name of the region to get         |
++------------+------+---------+-----------------------------------+
+| cell       | query| string  | Name of the cell to get           |
++------------+------+---------+-----------------------------------+
+| ip_address | query| string  | IP address to get                 |
++------------+------+---------+-----------------------------------+
+| service    | query| string  | Openstack service to query gost by|
++------------+------+---------+-----------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - hosts: hosts
-    - id: host_id_body
-    - name: host_name
-    - cell_id: cell_id_body
-    - parent_id: parent_id
-    - project_id: project_id
-    - region_id: region_id_body
-    - ip_address: ip_address
-    - device_type: device_type
-    - labels: labels
-    - note: note
-    - data: data
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| hosts      | body | array   | array of host           |
++------------+------+---------+-------------------------+
+| host_id    | body | object  | Unique ID of the host   |
++------------+------+---------+-------------------------+
+| name       | body | object  | Unique name of the host |
++------------+------+---------+-------------------------+
+| cell_id    | body | object  | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| region_id  | body | object  | Unique ID of the region |
++------------+------+---------+-------------------------+
+| parent_id  | body | object  | Parent ID of this host  |
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
+| ip_address | body | string  | IP address of host      |
++------------+------+---------+-------------------------+
+| device_type| body | string  | Type of host            |
++------------+------+---------+-------------------------+
+| labels     | body | string  | User defined labels     |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
 
 **Example List Host** (TO-DO)
 
 ..literalinclude:: ../../doc/api_samples/hosts/hosts-list-resp.json
    :language: javascript
 
-**Example Unexpected Error **
+**Example Unexpected Error**
 
 ..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
    :language: javascript
@@ -129,7 +184,9 @@ Response
 Update Hosts
 ============
 
-.. rest_method:: PUT /v1/hosts/{host_id}
+.. glossary::
+    PUT 
+        /v1/hosts/{host_id}
 
 Update an existing host
 
@@ -140,28 +197,41 @@ Error response codes: invalid request(400), host not found(404), validation exce
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - id: host_id_body
-    - name: host_name
-    - cell_id: cell_id_body
-    - parent_id: parent_id
-    - project_id: project_id
-    - region_id: region_id_body
-    - ip_address: ip_address
-    - device_type: device_type
-    - labels: labels
-    - note: note
-    - data: data
-    - host_id: host_id
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| host_id    | body | object  | Unique ID of the host   |
++------------+------+---------+-------------------------+
+| name       | body | object  | Unique name of the host |
++------------+------+---------+-------------------------+
+| cell_id    | body | object  | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| region_id  | body | object  | Unique ID of the region |
++------------+------+---------+-------------------------+
+| parent_id  | body | object  | Parent ID of this host  |
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
+| ip_address | body | string  | IP address of host      |
++------------+------+---------+-------------------------+
+| device_type| body | string  | Type of host            |
++------------+------+---------+-------------------------+
+| labels     | body | string  | User defined labels     |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
+| host_id    | path | integer | Unique ID of the host   |
++------------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Host** (TO-DO)
 
@@ -171,20 +241,43 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
-
-    - host: host
-    - id: host_id_body
-    - name: host_name
-    - cell_id: cell_id_body
-    - parent_id: parent_id
-    - project_id: project_id
-    - region_id: region_id_body
-    - ip_address: ip_address
-    - device_type: device_type
-    - labels: labels
-    - note: note
-    - data: data
++------------+------+---------+-------------------------+
+| Name       | In   | Type    | Description             |
++============+======+=========+=========================+
+| host       | body | object  | - host_id               |
+|            |      |         | - name                  |
+|            |      |         | - cell_id               |
+|            |      |         | - region_id             |
+|            |      |         | - parent_id             |
+|            |      |         | - project_id            |
+|            |      |         | - ip_address            |
+|            |      |         | - device_type           |
+|            |      |         | - labels                |
+|            |      |         | - note                  |
+|            |      |         | - data                  |
++------------+------+---------+-------------------------+
+| host_id    | body | object  | Unique ID of the host   |
++------------+------+---------+-------------------------+
+| name       | body | object  | Unique name of the host |
++------------+------+---------+-------------------------+
+| cell_id    | body | object  | Unique ID of the cell   |
++------------+------+---------+-------------------------+
+| region_id  | body | object  | Unique ID of the region |
++------------+------+---------+-------------------------+
+| parent_id  | body | object  | Parent ID of this host  |
++------------+------+---------+-------------------------+
+| project_id | body | integer | ID of the project       |
++------------+------+---------+-------------------------+
+| ip_address | body | string  | IP address of host      |
++------------+------+---------+-------------------------+
+| device_type| body | string  | Type of host            |
++------------+------+---------+-------------------------+
+| labels     | body | string  | User defined labels     |
++------------+------+---------+-------------------------+
+| note       | body | string  | Note used for governance|
++------------+------+---------+-------------------------+
+| data       | body | object  | User defined data       |
++------------+------+---------+-------------------------+
 
 **Example Update Host**  (TO-DO)
 
@@ -194,7 +287,9 @@ Response
 Update Host Data
 ==================
 
-.. rest_method:: PUT /v1/hosts/{host_id}/data
+.. glossary:: 
+    PUT 
+        /v1/hosts/{host_id}/data
 
 Update user defined data for the host
 
@@ -205,19 +300,23 @@ Error response codes: invalid request(400), host not found(404), validation exce
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - key: key
-    - value: value
-    - host_id: host_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| key    | body | string  | Identifier              |
++--------+------+---------+-------------------------+
+| value  | body | object  | Data                    |
++--------+------+---------+-------------------------+
+| host_id| path | integer | Unique ID of the host   |
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Host Data** (TO-DO)
 
@@ -227,10 +326,14 @@ Required Header
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| key    | body | string  | Identifier              |
++--------+------+---------+-------------------------+
+| value  | body | object  | Data                    |
++--------+------+---------+-------------------------+
 
-    - key: key
-    - value: value
 
 **Example Update Host Data** (TO-DO)
 
@@ -240,7 +343,9 @@ Response
 Delete Host
 ===========
 
-.. rest_method:: DELETE /v1/hosts/{host_id}
+.. glossary:: 
+    DELETE 
+        /v1/hosts/{host_id}
 
 Deletes an existing record of a Host
 
@@ -251,17 +356,19 @@ Error response codes: invalid request(400), host not found(404)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - host_id: host_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| host_id| path | integer | Unique ID of the host   |
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
@@ -271,7 +378,9 @@ No body content is returned on a successful DELETE
 Delete Host Data
 ================
 
-.. rest_method:: DELETE /v1/hosts/{host_id}/data
+.. glossary:: 
+    DELETE 
+        /v1/hosts/{host_id}/data
 
 Delete existing key/value data for the Host
 
@@ -282,17 +391,19 @@ Error response codes: invalid request(400), host not found(404) validation excep
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - host_id: host_id
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| host_id| path | integer | Unique ID of the host   |
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------

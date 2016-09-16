@@ -1,4 +1,4 @@
-.. -*- rst -*-
+.. _regions:
 
 =======
 Regions
@@ -9,7 +9,9 @@ Definition of region
 Create Region
 ==============
 
-.. rest_method:: POST /v1/region
+.. glossary:: 
+    POST 
+        /v1/region
 
 Creates a new Region
 
@@ -20,18 +22,21 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - name: region_name
-    - project_id: project_id
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| name      | body | string  | Unique name of the region|
++-----------+------+---------+--------------------------+
+| project_id| body | integer | ID of the project        |
++-----------+------+---------+--------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Create Region**
 
@@ -41,12 +46,28 @@ Required Header
 Response
 --------
 
-    - region: region
-    - id: region_id_body
-    - name: region_name
-    - project_id: project_id
-    - cells: cells
-    - data: data
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| region    | body | object  | - id                     |
+|           |      |         | - name                   |
+|           |      |         | - project_id             |
+|           |      |         | - cells                  |
+|           |      |         | - note                   |
+|           |      |         | - data                   |
++-----------+------+---------+--------------------------+
+| region_id | body | integer | Unique ID of the region  |
++-----------+------+---------+--------------------------+
+| name      | body | string  | Unique name of the region|
++-----------+------+---------+--------------------------+
+| project_id| body | integer | ID of the project        |
++-----------+------+---------+--------------------------+
+| cells     | body | array   | array of cells           |
++-----------+------+---------+--------------------------+
+| note      | body | string  | Note used for governance |
++-----------+------+---------+--------------------------+
+| data      | body | object  | User defined data        |
++-----------+------+---------+--------------------------+
 
 **Example Create Region**
 
@@ -56,7 +77,9 @@ Response
 List Regions
 ==============
 
-.. rest_method::  GET /v1/regions
+.. glossary::  
+    GET 
+        /v1/regions
 
 Gets all Regions
 
@@ -68,35 +91,50 @@ Default response: unexpected error
 
 Request
 --------
-- name: region_name_query
-    - id: region_id_query
+
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| name      | query| string  | Name of the region to get|
++-----------+------+---------+--------------------------+
+| region_id | query| integer | ID of the region to get  |
++-----------+------+---------+--------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
 
-.. rest_parameters:: parameters.yaml
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| regions   | body | array   | array of regions         |
++-----------+------+---------+--------------------------+
+| region_id | body | integer | Unique ID of the region  |
++-----------+------+---------+--------------------------+
+| name      | body | string  | Unique name of the region|
++-----------+------+---------+--------------------------+
+| project_id| body | integer | ID of the project        |
++-----------+------+---------+--------------------------+
+| cells     | body | array   | array of cells           |
++-----------+------+---------+--------------------------+
+| note      | body | string  | Note used for governance |
++-----------+------+---------+--------------------------+
+| data      | body | object  | User defined data        |
++-----------+------+---------+--------------------------+
 
-    - region: region
-    - id: region_id_body
-    - name: region_name
-    - project_id: project_id
-    - cells: cells
-    - data: data
-
-**Example List Regions**
+**Example List Regions** (TO-DO)
 
 ..literalinclude:: ../../doc/api_samples/regions/regions-list-resp.json
    :language: javascript
 
-**Example Unexpected Error **
+**Example Unexpected Error** (TO-DO)
 
 ..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
    :language: javascript
@@ -104,7 +142,9 @@ Response
 Update Region
 =============
 
-.. rest_method:: PUT /v1/regions/{region_id}
+.. glossary:: 
+    PUT 
+        /v1/regions/{region_id}
 
 Update an existing region
 
@@ -115,22 +155,31 @@ Error response codes: invalid request(400), region not found(404), validation ex
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - id: region_id_body
-    - name: region_name
-    - project_id: project_id
-    - cells: cells
-    - data: data
-    - region_id: region_id
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| region_id | body | integer | Unique ID of the region  |
++-----------+------+---------+--------------------------+
+| name      | body | string  | Unique name of the region|
++-----------+------+---------+--------------------------+
+| project_id| body | integer | ID of the project        |
++-----------+------+---------+--------------------------+
+| cells     | body | array   | array of cells           |
++-----------+------+---------+--------------------------+
+| note      | body | string  | Note used for governance |
++-----------+------+---------+--------------------------+
+| data      | body | object  | User defined data        |
++-----------+------+---------+--------------------------+
+| region_id | path | integer | Unique ID of the region  |
++-----------+------+---------+--------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Region** (TO-DO)
 
@@ -140,12 +189,28 @@ Required Header
 Response
 --------
 
-    - region: region
-    - id: region_id_body
-    - name: region_name
-    - project_id: project_id
-    - cells: cells
-    - data: data
++-----------+------+---------+--------------------------+
+| Name      | In   | Type    | Description              |
++===========+======+=========+==========================+
+| region    | body | object  | - id                     |
+|           |      |         | - name                   |
+|           |      |         | - project_id             |
+|           |      |         | - cells                  |
+|           |      |         | - note                   |
+|           |      |         | - data                   |
++-----------+------+---------+--------------------------+
+| region_id | body | integer | Unique ID of the region  |
++-----------+------+---------+--------------------------+
+| name      | body | string  | Unique name of the region|
++-----------+------+---------+--------------------------+
+| project_id| body | integer | ID of the project        |
++-----------+------+---------+--------------------------+
+| cells     | body | array   | array of cells           |
++-----------+------+---------+--------------------------+
+| note      | body | string  | Note used for governance |
++-----------+------+---------+--------------------------+
+| data      | body | object  | User defined data        |
++-----------+------+---------+--------------------------+
 
 **Example Update Region**  (TO-DO)
 
@@ -155,7 +220,9 @@ Response
 Update Region Data
 ==================
 
-.. rest_method:: PUT /v1/regions/{region_id}/data
+.. glossary:: 
+    PUT 
+        /v1/regions/{region_id}/data
 
 Update user defined data for the region
 
@@ -166,18 +233,23 @@ Error response codes: invalid request(400), region not found(404), validation ex
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - key: key
-    - value: value
-    - region_id: region_id
++----------+------+---------+-------------------------+
+| Name     | In   | Type    | Description             |
++==========+======+=========+=========================+
+| key      | body | string  | Identifier              |
++----------+------+---------+-------------------------+
+| value    | body | object  | Data                    |
++----------+------+---------+-------------------------+
+| region_id| path | integer | Unique ID of the region |
++----------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+
+    - Content-Type: application/json 
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 **Example Update Region Data** (TO-DO)
 
@@ -187,8 +259,14 @@ Required Header
 Response
 --------
 
-    - key: key
-    - value: value
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| key    | body | string  | Identifier              |
++--------+------+---------+-------------------------+
+| value  | body | object  | Data                    |
++--------+------+---------+-------------------------+
+
 
 **Example Update Region Data** (TO-DO)
 
@@ -198,7 +276,9 @@ Response
 Delete Region
 ==============
 
-.. rest_method:: DELETE /v1/regions/{region_id}
+.. glossary:: 
+    DELETE 
+        /v1/regions/{region_id}
 
 Deletes an existing record of a Region
 
@@ -209,17 +289,19 @@ Error response codes: invalid request(400), region not found(404)
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - region_id: region_id
++----------+------+---------+-------------------------+
+| Name     | In   | Type    | Description             |
++==========+======+=========+=========================+
+| region_id| path | integer | Unique ID of the region |
++----------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: applicaton/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
@@ -229,7 +311,9 @@ No body content is returned on a successful DELETE
 Delete Region Data
 ==================
 
-.. rest_method:: DELETE /v1/regions/{region_id}/data
+.. glossary:: 
+    DELETE 
+        /v1/regions/{region_id}/data
 
 Delete existing key/value data for the region
 
@@ -240,17 +324,19 @@ Error response codes: invalid request(400), region not found(404) validation exc
 Request
 -------
 
-.. rest_parameters:: parameters.yaml
-
-    - region_id: region_id
++----------+------+---------+-------------------------+
+| Name     | In   | Type    | Description             |
++==========+======+=========+=========================+
+| region_id| path | integer | Unique ID of the region |
++----------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: Content_Type
-    - X-Auth-Token: X-Auth-Token
-    - X-Auth-User: X-Auth-User
-    - X-Auth-Project: X-Auth-Project
+    - Content-Type: application/json
+    - X-Auth-Token
+    - X-Auth-User
+    - X-Auth-Project
 
 Response
 --------
