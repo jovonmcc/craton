@@ -24,6 +24,8 @@ on_read_the_docs = os.environ.get('READTHEDOCS') == 'True'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.graphviz',
+    'sphinx.ext.todo',
 ]
 if not on_read_the_docs:
     extensions.append('oslosphinx')
@@ -64,6 +66,8 @@ pygments_style = 'sphinx'
 # html_theme = '_theme'
 # html_static_path = ['static']
 
+html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }
+
 # Output file base name for HTML help builder.
 htmlhelp_basename = '%sdoc' % project
 
@@ -76,6 +80,9 @@ latex_documents = [
      u'%s Documentation' % project,
      u'OpenStack Foundation', 'manual'),
 ]
+
+# If true, todo and todolist produce output.
+todo_include_todos=True
 
 # Example configuration for intersphinx: refer to the Python standard library.
 #intersphinx_mapping = {'http://docs.python.org/': None}

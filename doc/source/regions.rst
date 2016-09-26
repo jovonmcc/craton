@@ -7,11 +7,9 @@ Regions
 Definition of region
 
 Create Region
-==============
+=============
 
-.. glossary:: 
-    POST 
-        /v1/region
+:POST: /v1/region
 
 Creates a new Region
 
@@ -22,13 +20,17 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-+-----------+------+---------+--------------------------+
-| Name      | In   | Type    | Description              |
-+===========+======+=========+==========================+
-| name      | body | string  | Unique name of the region|
-+-----------+------+---------+--------------------------+
-| project_id| body | integer | ID of the project        |
-+-----------+------+---------+--------------------------+
++-------+------+---------+--------------------------+
+| Name  | In   | Type    | Description              |
++=======+======+=========+==========================+
+| name  | body | string  | Unique name of the region|
++-------+------+---------+--------------------------+
+| labels| body | string  | User defined labels      |
++-------+------+---------+--------------------------+
+| note  | body | string  | Note used for governance |
++-------+------+---------+--------------------------+
+| data  | body | object  | User defined data        |
++-------+------+---------+--------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -38,9 +40,9 @@ Required Header
     - X-Auth-User
     - X-Auth-Project
 
-**Example Create Region**
+..todo::**Example Create Region**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-create-req.json
+..literalinclude:: ./api_samples/regions/regions-create-req.json
    :language: javascript
 
 Response
@@ -51,18 +53,18 @@ Response
 +===========+======+=========+==========================+
 | region    | body | object  | - id                     |
 |           |      |         | - name                   |
-|           |      |         | - project_id             |
 |           |      |         | - cells                  |
+|           |      |         | - labels                 |
 |           |      |         | - note                   |
 |           |      |         | - data                   |
 +-----------+------+---------+--------------------------+
-| region_id | body | integer | Unique ID of the region  |
+| id        | body | integer | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
 | name      | body | string  | Unique name of the region|
 +-----------+------+---------+--------------------------+
-| project_id| body | integer | ID of the project        |
+| cells     | body | array   | Array of cells           |
 +-----------+------+---------+--------------------------+
-| cells     | body | array   | array of cells           |
+| labels    | body | string  | User defined labels      |
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
@@ -75,11 +77,9 @@ Response
    :language: javascript
 
 List Regions
-==============
+============
 
-.. glossary::  
-    GET 
-        /v1/regions
+:GET: /v1/regions
 
 Gets all Regions
 
@@ -90,15 +90,15 @@ Error response codes: invalid request(400), validation exception(405)
 Default response: unexpected error
 
 Request
---------
+-------
 
-+-----------+------+---------+--------------------------+
-| Name      | In   | Type    | Description              |
-+===========+======+=========+==========================+
-| name      | query| string  | Name of the region to get|
-+-----------+------+---------+--------------------------+
-| region_id | query| integer | ID of the region to get  |
-+-----------+------+---------+--------------------------+
++-----+------+---------+---------+--------------------------+
+| Name| In   | Type    | Required| Description              |
++=====+======+=========+=========+==========================+
+| id  | query| integer | No      | ID of the region to get  |
++-----+------+---------+---------+--------------------------+
+| name| query| string  | No      | Name of the region to get|
++-----+------+---------+------------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -114,15 +114,15 @@ Response
 +-----------+------+---------+--------------------------+
 | Name      | In   | Type    | Description              |
 +===========+======+=========+==========================+
-| regions   | body | array   | array of regions         |
+| regions   | body | array   | Array of regions         |
 +-----------+------+---------+--------------------------+
-| region_id | body | integer | Unique ID of the region  |
+| id        | body | integer | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
 | name      | body | string  | Unique name of the region|
 +-----------+------+---------+--------------------------+
-| project_id| body | integer | ID of the project        |
+| cells     | body | array   | Array of cells in region |
 +-----------+------+---------+--------------------------+
-| cells     | body | array   | array of cells           |
+| labels    | body | string  | User defined labels      |
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
@@ -142,9 +142,7 @@ Response
 Update Region
 =============
 
-.. glossary:: 
-    PUT 
-        /v1/regions/{region_id}
+:PUT: /v1/regions/{id}
 
 Update an existing region
 
@@ -155,23 +153,21 @@ Error response codes: invalid request(400), region not found(404), validation ex
 Request
 -------
 
-+-----------+------+---------+--------------------------+
-| Name      | In   | Type    | Description              |
-+===========+======+=========+==========================+
-| region_id | body | integer | Unique ID of the region  |
-+-----------+------+---------+--------------------------+
-| name      | body | string  | Unique name of the region|
-+-----------+------+---------+--------------------------+
-| project_id| body | integer | ID of the project        |
-+-----------+------+---------+--------------------------+
-| cells     | body | array   | array of cells           |
-+-----------+------+---------+--------------------------+
-| note      | body | string  | Note used for governance |
-+-----------+------+---------+--------------------------+
-| data      | body | object  | User defined data        |
-+-----------+------+---------+--------------------------+
-| region_id | path | integer | Unique ID of the region  |
-+-----------+------+---------+--------------------------+
++-----------+------+---------+--------------------------------------+
+| Name      | In   | Type    | Description                          |
++===========+======+=========+======================================+
+| name      | body | string  | Unique name of the region            |
++-----------+------+---------+--------------------------------------+
+| cells     | body | array   | Array of cells in region             |
++-----------+------+---------+--------------------------------------+
+| labels    | body | string  | User defined labels                  |
++-----------+------+---------+--------------------------------------+
+| note      | body | string  | Note used for governance             |
++-----------+------+---------+--------------------------------------+
+| data      | body | object  | User defined data                    |
++-----------+------+---------+--------------------------------------+
+| id        | path | integer | Unique ID of the region to be updated|
++-----------+------+---------+--------------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -194,18 +190,18 @@ Response
 +===========+======+=========+==========================+
 | region    | body | object  | - id                     |
 |           |      |         | - name                   |
-|           |      |         | - project_id             |
 |           |      |         | - cells                  |
+|           |      |         | - labels                 |
 |           |      |         | - note                   |
 |           |      |         | - data                   |
 +-----------+------+---------+--------------------------+
-| region_id | body | integer | Unique ID of the region  |
+| id        | body | integer | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
 | name      | body | string  | Unique name of the region|
 +-----------+------+---------+--------------------------+
-| project_id| body | integer | ID of the project        |
+| cells     | body | array   | Array of cells in region |
 +-----------+------+---------+--------------------------+
-| cells     | body | array   | array of cells           |
+| labels    | body | string  | User defined labels      |
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
@@ -220,11 +216,9 @@ Response
 Update Region Data
 ==================
 
-.. glossary:: 
-    PUT 
-        /v1/regions/{region_id}/data
+:PUT: /v1/regions/{id}/data
 
-Update user defined data for the region
+Update user defined data for the region	
 
 Normal response codes: OK(200)
 
@@ -233,20 +227,20 @@ Error response codes: invalid request(400), region not found(404), validation ex
 Request
 -------
 
-+----------+------+---------+-------------------------+
-| Name     | In   | Type    | Description             |
-+==========+======+=========+=========================+
-| key      | body | string  | Identifier              |
-+----------+------+---------+-------------------------+
-| value    | body | object  | Data                    |
-+----------+------+---------+-------------------------+
-| region_id| path | integer | Unique ID of the region |
-+----------+------+---------+-------------------------+
++----------+------+---------+--------------------------------------+
+| Name     | In   | Type    | Description                          |
++==========+======+=========+======================================+
+| key      | body | string  | Identifier                           |
++----------+------+---------+--------------------------------------+
+| value    | body | object  | Data                                 |
++----------+------+---------+--------------------------------------+
+| id       | path | integer | Unique ID of the region to be updated|
++----------+------+---------+--------------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json 
+    - Content-Type: application/json
     - X-Auth-Token
     - X-Auth-User
     - X-Auth-Project
@@ -274,26 +268,24 @@ Response
    :language: javascript
 
 Delete Region
-==============
+=============
 
-.. glossary:: 
-    DELETE 
-        /v1/regions/{region_id}
+:DELETE: /v1/regions/{id}
 
 Deletes an existing record of a Region
 
-Normal response codes: OK(200)
+Normal response codes: no content(204)
 
 Error response codes: invalid request(400), region not found(404)
 
 Request
 -------
 
-+----------+------+---------+-------------------------+
-| Name     | In   | Type    | Description             |
-+==========+======+=========+=========================+
-| region_id| path | integer | Unique ID of the region |
-+----------+------+---------+-------------------------+
++------+------+---------+--------------------------------------+
+| Name | In   | Type    | Description                          |
++======+======+=========+======================================+
+| id   | path | integer | Unique ID of the region to be deleted|
++------+------+---------+--------------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -311,24 +303,22 @@ No body content is returned on a successful DELETE
 Delete Region Data
 ==================
 
-.. glossary:: 
-    DELETE 
-        /v1/regions/{region_id}/data
+:DELETE: /v1/regions/{id}/data
 
 Delete existing key/value data for the region
 
-Normal response codes: OK(200)
+Normal response codes: no content(204)
 
 Error response codes: invalid request(400), region not found(404) validation exception(405)
 
 Request
 -------
 
-+----------+------+---------+-------------------------+
-| Name     | In   | Type    | Description             |
-+==========+======+=========+=========================+
-| region_id| path | integer | Unique ID of the region |
-+----------+------+---------+-------------------------+
++------+------+---------+--------------------------------------+
+| Name | In   | Type    | Description                          |
++======+======+=========+======================================+
+| id   | path | integer | Unique ID of the region to be deleted|
++------+------+---------+--------------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
