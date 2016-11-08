@@ -40,9 +40,7 @@ Required Header
     - X-Auth-User
     - X-Auth-Project
 
-..todo:: Example Create Region
-
-..literalinclude:: ./api_samples/regions/regions-create-req.json
+.. todo :: **Example Create Region** ..literalinclude:: ./api_samples/regions/regions-create-req.json
    :language: javascript
 
 Response

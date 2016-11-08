@@ -81,7 +81,7 @@ latex_documents = [
      u'OpenStack Foundation', 'manual'),
 ]
 
-# If true, todo and todolist produce output.
+# If true, todo and todolist will produce output.
 todo_include_todos= True
 
 # Example configuration for intersphinx: refer to the Python standard library.
