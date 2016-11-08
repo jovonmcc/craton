@@ -9,7 +9,7 @@ Definition of region
 Create Region
 =============
 
-:POST: /v1/region
+:POST : /v1/region
 
 Creates a new Region
 
