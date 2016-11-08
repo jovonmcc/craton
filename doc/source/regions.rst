@@ -34,11 +34,11 @@ Request
 
 Required Header
 ^^^^^^^^^^^^^^^
-
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+ 
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 .. todo:: **Example Create Region**
 
