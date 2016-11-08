@@ -24,8 +24,6 @@ Request
 +============+======+=========+=========================+
 | name       | boody| string  | Unique name of the cell |
 +------------+------+---------+-------------------------+
-| id         | body | integer | Unique ID of the cell   |
-+------------+------+---------+-------------------------+
 | region_id  | body | integer | Unique ID of the region |
 +------------+------+---------+-------------------------+
 | labels     | body | string  | User defined labels     |
@@ -38,15 +36,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Create Cell** (TO-DO)
+.. todo:: **Example Create Cell**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-create-req.json
-   :language: javascript
+ ..literalinclude:: ./doc/api_samples/cells/cells-create-req.json
+    :language: javascript
 
 Response
 --------
@@ -74,10 +72,10 @@ Response
 | data      | body | object  | User defined data             |
 +-----------+------+---------+-------------------------------+
 
-**Example Create Cell** (TO-DO)
+.. todo:: **Example Create Cell**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-create-resp.json
-   :language: javascript
+ ..literalinclude:: ./doc/api_samples/cells/cells-create-resp.json
+    :language: javascript
 
 List Cells
 ==========
@@ -98,20 +96,16 @@ Request
 +-----------+-------+--------+---------+----------------------------------+
 | Name      | In    | Type   | Required| Description                      |
 +===========+=======+========+=========+==================================+
-| id        | query | integer| Yes     | ID of the cell to get            |
-+-----------+-------+--------+---------+----------------------------------+
-| name      | query | string | No      | Name of the cell to get          |
-+-----------+-------+--------+--------------------------------------------+
 | region_id | query | string | No      | ID of the region to get cells for|
-+-----------+-------+---------+-------------------------------------------+
++-----------+-------+--------+---------+----------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -134,15 +128,15 @@ Response
 | data       | body | object  | User defined data             |
 +------------+------+---------+-------------------------------+
 
-**Example List Cells** (TO-DO)
+.. todo:: **Example List Cells**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-list-resp.json
-   :language: javascript
+ ..literalinclude:: ./doc/api_samples/cells/cells-list-resp.json
+    :language: javascript
 
-**Example Unexpected Error** (TO-DO)
+.. todo:: **Example Unexpected Error**
 
-..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/errors/errors-unexpected-resp.json
+    :language: javascript
 
 Update Cells
 ============
@@ -161,8 +155,6 @@ Request
 +----------+------+---------+------------------------------------+
 | Name     | In   | Type    | Description                        |
 +==========+======+=========+====================================+
-| id       | body | integer | Unique ID of the cell              |
-+----------+------+---------+------------------------------------+
 | name     | body | string  | Unique name of the cell            |
 +----------+------+---------+------------------------------------+
 | region_id| body | integer | Unique ID of the cell's region     |
@@ -179,15 +171,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Cell** (TO-DO)
+.. todo:: **Example Update Cell**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-update-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/cells/cells-update-req.json
+    :language: javascript
 
 Response
 --------
@@ -215,9 +207,9 @@ Response
 | data     | body | object  | User defined data             |
 +----------+------+---------+-------------------------------+
 
-**Example Update Cell**  (TO-DO)
+.. todo:: **Example Update Cell**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-update-resp.json
+ ..literalinclude:: ./api_samples/cells/cells-update-resp.json
    :language: javascript
 
 Update Cell Data
@@ -247,15 +239,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Cell Data** (TO-DO)
+.. todo:: **Example Update Cell Data**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-upadate—data-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/cells/cells-upadate—data-req.json
+    :language: javascript
 
 Response
 --------
@@ -268,10 +260,10 @@ Response
 | value  | body | object  | Data                    |
 +--------+------+---------+-------------------------+
 
-**Example Update Cell Data** (TO-DO)
+.. todo:: **Example Update Cell Data**
 
-..literalinclude:: ../../doc/api_samples/cells/cells-update-data-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/cells/cells-update-data-resp.json
+    :language: javascript
 
 Delete Cell
 ===========
@@ -296,10 +288,10 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -320,19 +312,23 @@ Error response codes: invalid request(400), cell not found(404) validation excep
 Request
 -------
 
-+--------+------+---------+------------------------------------+
-| Name   | In   | Type    | Description                        |
-+========+======+=========+====================================+
-| id     | path | integer | Unique ID of the cell to be deleted|
-+--------+------+---------+------------------------------------+
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| id     | path | integer | Unique ID of the cell   |
++--------+------+---------+-------------------------+
+| key    | body | string  | Identifier to be deleted|
++--------+------+---------+-------------------------+
+| value  | body | object  | Data to be deleted      |
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------

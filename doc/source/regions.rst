@@ -9,7 +9,7 @@ Definition of region
 Create Region
 =============
 
-: POST: /v1/region
+:POST: /v1/region
 
 Creates a new Region
 
@@ -34,7 +34,7 @@ Request
 
 Required Header
 ^^^^^^^^^^^^^^^
- 
+
 - Content-Type: application/json
 - X-Auth-Token
 - X-Auth-User
@@ -71,10 +71,10 @@ Response
 | data      | body | object  | User defined data        |
 +-----------+------+---------+--------------------------+
 
-**Example Create Region**
+.. todo:: **Example Create Region**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-create-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-create-resp.json
+    :language: javascript
 
 List Regions
 ============
@@ -91,22 +91,15 @@ Default response: unexpected error
 
 Request
 -------
-
-+-----+------+---------+---------+--------------------------+
-| Name| In   | Type    | Required| Description              |
-+=====+======+=========+=========+==========================+
-| id  | query| integer | No      | ID of the region to get  |
-+-----+------+---------+---------+--------------------------+
-| name| query| string  | No      | Name of the region to get|
-+-----+------+---------+------------------------------------+
+No parameters 
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -129,15 +122,15 @@ Response
 | data      | body | object  | User defined data        |
 +-----------+------+---------+--------------------------+
 
-**Example List Regions** (TO-DO)
+.. todo:: **Example List Regions**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-list-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-list-resp.json
+    :language: javascript
 
-**Example Unexpected Error** (TO-DO)
+.. todo:: **Example Unexpected Error**
 
-..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/errors/errors-unexpected-resp.json
+    :language: javascript
 
 Update Region
 =============
@@ -172,15 +165,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Region** (TO-DO)
+.. todo:: **Example Update Region**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-update-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-update-req.json
+    :language: javascript
 
 Response
 --------
@@ -208,17 +201,17 @@ Response
 | data      | body | object  | User defined data        |
 +-----------+------+---------+--------------------------+
 
-**Example Update Region**  (TO-DO)
+.. todo:: **Example Update Region**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-update-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-update-resp.json
+    :language: javascript
 
 Update Region Data
 ==================
 
 :PUT: /v1/regions/{id}/data
 
-Update user defined data for the region	
+Update user defined data for the region
 
 Normal response codes: OK(200)
 
@@ -240,15 +233,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Region Data** (TO-DO)
+.. todo:: **Example Update Region Data**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-upadate—data-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-upadate—data-req.json
+    :language: javascript
 
 Response
 --------
@@ -262,10 +255,10 @@ Response
 +--------+------+---------+-------------------------+
 
 
-**Example Update Region Data** (TO-DO)
+.. todo:: **Example Update Region Data**
 
-..literalinclude:: ../../doc/api_samples/regions/regions-update-data-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/regions/regions-update-data-resp.json
+    :language: javascript
 
 Delete Region
 =============
@@ -290,10 +283,10 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: applicaton/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: applicaton/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -314,19 +307,23 @@ Error response codes: invalid request(400), region not found(404) validation exc
 Request
 -------
 
-+------+------+---------+--------------------------------------+
-| Name | In   | Type    | Description                          |
-+======+======+=========+======================================+
-| id   | path | integer | Unique ID of the region to be deleted|
-+------+------+---------+--------------------------------------+
++-------+------+---------+-------------------------+
+| Name  | In   | Type    | Description             |
++=======+======+=========+=========================+
+| id    | path | integer | Unique ID of the region |
++-------+------+---------+-------------------------+
+| key   | body | string  | Identifier to be deleted|
++-------+------+---------+-------------------------+
+| value | body | object  | Data to be deleted      |
++-------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------

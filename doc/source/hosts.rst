@@ -1,4 +1,4 @@
-.. _hosts:	
+.. _hosts:
 
 =====
 Hosts
@@ -47,15 +47,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Create Host** (TO-DO)
+.. todo:: **Example Create Host**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-create-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-create-req.json
+    :language: javascript
 
 Response
 --------
@@ -98,10 +98,10 @@ Response
 | data       | body | object  | User defined data             |
 +------------+------+---------+-------------------------------+
 
-**Example Create Host** (TO-DO)
+.. todo:: **Example Create Host**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-create-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-create-resp.json
+    :language: javascript
 
 List Hosts
 ==========
@@ -126,25 +126,23 @@ Request
 +------------+------+---------+---------+------------------------------+
 | limit      | query| integer | No      | Number of host to return     |
 |            |      |         |         | Ranging from 1 - 10000       |
-+------------+------+---------+----------------------------------------+
++------------+------+---------+---------+------------------------------+
 | name       | query| string  | No      | Name of the host to get      |
-+------------+------+---------+----------------------------------------+
-| id         | query| integer | No      | ID of the host to get        |
-+------------+------+---------+----------------------------------------+
++------------+------+---------+---------+------------------------------+
 | cell_id    | query| integer | No      | Name of the cell to get      |
-+------------+------+---------+----------------------------------------+
++------------+------+---------+---------+------------------------------+
 | ip         | query| string  | No      | IP address of the host to get|
-+------------+------+---------+----------------------------------------+
++------------+------+---------+---------+------------------------------+
 | device_type| query| string  | No      | Type of host to get          |
-+------------+------+---------+----------------------------------------+
++------------+------+---------+---------+------------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -177,15 +175,15 @@ Response
 | data       | body | object  | User defined data             |
 +------------+------+---------+-------------------------------+
 
-**Example List Host** (TO-DO)
+.. todo:: **Example List Host**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-list-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-list-resp.json
+     :language: javascript
 
-**Example Unexpected Error**
+.. todo:: **Example Unexpected Error**
 
-..literalinclude:: ../../doc/api_samples/errors/errors-unexpected-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/errors/errors-unexpected-resp.json
+    :language: javascript
 
 Update Hosts
 ============
@@ -230,15 +228,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Host** (TO-DO)
+.. todo:: **Example Update Host**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-update-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-update-req.json
+    :language: javascript
 
 Response
 --------
@@ -281,10 +279,10 @@ Response
 | data       | body | object  | User defined data             |
 +------------+------+---------+-------------------------------+
 
-**Example Update Host**  (TO-DO)
+.. todo:: **Example Update Host**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-update-resp.json
-   :language: javascript
+  ..literalinclude:: ./api_samples/hosts/hosts-update-resp.json
+     :language: javascript
 
 Update Host Data
 ================
@@ -313,15 +311,15 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
-**Example Update Host Data** (TO-DO)
+.. todo:: **Example Update Host Data**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-upadate—data-req.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-upadate—data-req.json
+    :language: javascript
 
 Response
 --------
@@ -335,10 +333,10 @@ Response
 +--------+------+---------+-------------------------+
 
 
-**Example Update Host Data** (TO-DO)
+.. todo:: **Example Update Host Data**
 
-..literalinclude:: ../../doc/api_samples/hosts/hosts-update-data-resp.json
-   :language: javascript
+ ..literalinclude:: ./api_samples/hosts/hosts-update-data-resp.json
+    :language: javascript
 
 Delete Host
 ===========
@@ -363,10 +361,10 @@ Request
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
@@ -387,19 +385,23 @@ Error response codes: invalid request(400), host not found(404) validation excep
 Request
 -------
 
-+--------+------+---------+------------------------------------+
-| Name   | In   | Type    | Description                        |
-+========+======+=========+====================================+
-| id     | path | integer | Unique ID of the host to be deleted|
-+--------+------+---------+------------------------------------+
++--------+------+---------+-------------------------+
+| Name   | In   | Type    | Description             |
++========+======+=========+=========================+
+| id     | path | integer | Unique ID of the host   |
++--------+------+---------+-------------------------+
+| key    | body | string  | Identifier to be deleted|
++--------+------+---------+-------------------------+
+| value  | body | object  | Data to be deleted      |
++--------+------+---------+-------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
 
-    - Content-Type: application/json
-    - X-Auth-Token
-    - X-Auth-User
-    - X-Auth-Project
+- Content-Type: application/json
+- X-Auth-Token
+- X-Auth-User
+- X-Auth-Project
 
 Response
 --------
