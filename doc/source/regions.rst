@@ -40,10 +40,14 @@ Required Header
 - X-Auth-User
 - X-Auth-Project
 
-.. todo:: **Example Create Region**
+.. code-block:: bash
 
- ..literalinclude:: ./api_samples/regions/regions-create-req.json
-    :language: javascript
+   curl -i "http://${MY_IP}:8080/v1/regions" \
+       -d '{"name": "DFW"}' \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: demo" \
+       -H "X-Auth-User: demo" \
+       -H "X-Auth-Project: 717e9a216e2d44e0bc848398563bda06"   
 
 Response
 --------
