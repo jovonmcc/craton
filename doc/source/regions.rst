@@ -40,9 +40,12 @@ Required Header
 - X-Auth-User
 - X-Auth-Project
 
+<<<<<<< HEAD
 Example Region Create
 *********************
 
+=======
+>>>>>>> e9e555888059f195eda5d561ec634a5d86e59b69
 .. code-block:: bash
 
    curl -i "http://${MY_IP}:8080/v1/regions" \
