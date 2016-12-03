@@ -20,17 +20,17 @@ Error response codes: invalid request(400), validation exception(405)
 Request
 -------
 
-+-------+------+---------+--------------------------+
-| Name  | In   | Type    | Description              |
-+=======+======+=========+==========================+
-| name  | body | string  | Unique name of the region|
-+-------+------+---------+--------------------------+
-| labels| body | string  | User defined labels      |
-+-------+------+---------+--------------------------+
-| note  | body | string  | Note used for governance |
-+-------+------+---------+--------------------------+
-| data  | body | object  | User defined data        |
-+-------+------+---------+--------------------------+
++----------+------+---------+--------------------------+
+| Name     | In   | Type    | Description              |
++==========+======+=========+==========================+
+| name     | body | string  | Unique name of the region|
++----------+------+---------+--------------------------+
+| labels   | body | string  | User defined labels      |
++----------+------+---------+--------------------------+
+| note     | body | string  | Note used for governance |
++----------+------+---------+--------------------------+
+| variables| body | object  | User defined variables   |
++----------+------+---------+--------------------------+
 
 Required Header
 ^^^^^^^^^^^^^^^
@@ -46,11 +46,11 @@ Example Region Create
 .. code-block:: bash
 
    curl -i "http://${MY_IP}:8080/v1/regions" \
-       -d '{"name": "DFW"}' \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: demo" \
-       -H "X-Auth-User: demo" \
-       -H "X-Auth-Project: 717e9a216e2d44e0bc848398563bda06"   
+        -d '{"name": "DFW"}' \
+        -H "Content-Type: application/json" \
+        -H "X-Auth-Token: demo" \
+        -H "X-Auth-User: demo" \
+        -H "X-Auth-Project: 717e9a216e2d44e0bc848398563bda06"   
 
 Response
 --------
@@ -63,7 +63,7 @@ Response
 |           |      |         | - cells                  |
 |           |      |         | - labels                 |
 |           |      |         | - note                   |
-|           |      |         | - data                   |
+|           |      |         | - variables              |
 +-----------+------+---------+--------------------------+
 | id        | body | integer | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
@@ -75,7 +75,7 @@ Response
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
-| data      | body | object  | User defined data        |
+| variables | body | object  | User defined variables   |
 +-----------+------+---------+--------------------------+
 
 Example Region Create 
@@ -143,7 +143,7 @@ Response
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
-| data      | body | object  | User defined data        |
+| variables | body | object  | User defined variables   |
 +-----------+------+---------+--------------------------+
 
 Example Region List
@@ -197,8 +197,6 @@ Request
 +-----------+------+---------+--------------------------------------+
 | note      | body | string  | Note used for governance             |
 +-----------+------+---------+--------------------------------------+
-| data      | body | object  | User defined data                    |
-+-----------+------+---------+--------------------------------------+
 | id        | path | integer | Unique ID of the region to be updated|
 +-----------+------+---------+--------------------------------------+
 
@@ -234,7 +232,7 @@ Response
 |           |      |         | - cells                  |
 |           |      |         | - labels                 |
 |           |      |         | - note                   |
-|           |      |         | - data                   |
+|           |      |         | - variables              |
 +-----------+------+---------+--------------------------+
 | id        | body | integer | Unique ID of the region  |
 +-----------+------+---------+--------------------------+
@@ -246,7 +244,7 @@ Response
 +-----------+------+---------+--------------------------+
 | note      | body | string  | Note used for governance |
 +-----------+------+---------+--------------------------+
-| data      | body | object  | User defined data        |
+| variables | body | object  | User defined variables   |
 +-----------+------+---------+--------------------------+
 
 Example Region Update
